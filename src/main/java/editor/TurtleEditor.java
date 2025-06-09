@@ -55,7 +55,7 @@ public class TurtleEditor {
                         break;
                     case "rect":
                         cmd = new RectangleCommand(turtle, 10, 5);
-                        cmd.execute(); 
+                        cmd.execute();
                         continue;
                     case "move":
                         cmd = new UndoableMoveCommand(turtle, Double.parseDouble(tokens[1]));
@@ -68,6 +68,10 @@ public class TurtleEditor {
                     case "turn":
                         cmd = new UndoableTurnCommand(turtle, Double.parseDouble(tokens[1]));
                         history.execute((UndoableCommand) cmd);
+                        continue;
+                    case "zero":
+                        cmd = new Digit0Command(turtle);
+                        cmd.execute();
                         continue;
                     default:
                         System.out.println("Unknown command.");
