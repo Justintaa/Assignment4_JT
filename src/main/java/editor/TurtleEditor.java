@@ -73,6 +73,10 @@ public class TurtleEditor {
                         cmd = new UndoableTurnCommand(turtle, Double.parseDouble(tokens[1]));
                         history.execute((UndoableCommand) cmd);
                         continue;
+                    case "3":
+                        cmd = new ThreeCommand(turtle);
+                        cmd.execute();
+                        continue;
                     case "zero":
                         cmd = new Digit0Command(turtle);
                         cmd.execute();
