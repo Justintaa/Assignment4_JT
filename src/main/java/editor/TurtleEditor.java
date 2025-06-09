@@ -25,6 +25,7 @@ public class TurtleEditor {
         Matrix matrix = new Matrix(40, 20); // width x height
         Pen pen = new Pen(new BresenhamStrategy());
         Turtle turtle = new Turtle(matrix, pen);
+        HistoryManager history = new HistoryManager();
 
         while (true) {
             try {
@@ -46,15 +47,24 @@ public class TurtleEditor {
                     case "show":
                         cmd = new ShowCommand(turtle);
                         break;
+                    case "undo":
+                        cmd = new UndoCommand(history);
+                        break;
+                    case "redo":
+                        cmd = new RedoCommand(history);
+                        break;
                     case "move":
-                        cmd = new MoveCommand(turtle, Double.parseDouble(tokens[1]));
-                        break;
+                        cmd = new UndoableMoveCommand(turtle, Double.parseDouble(tokens[1]));
+                        history.execute((UndoableCommand) cmd);
+                        continue;
                     case "trace":
-                        cmd = new TraceCommand(turtle, Double.parseDouble(tokens[1]));
-                        break;
+                        cmd = new UndoableTraceCommand(turtle, Double.parseDouble(tokens[1]));
+                        history.execute((UndoableCommand) cmd);
+                        continue;
                     case "turn":
-                        cmd = new TurnCommand(turtle, Double.parseDouble(tokens[1]));
-                        break;
+                        cmd = new UndoableTurnCommand(turtle, Double.parseDouble(tokens[1]));
+                        history.execute((UndoableCommand) cmd);
+                        continue;
                     default:
                         System.out.println("Unknown command.");
                         continue;
