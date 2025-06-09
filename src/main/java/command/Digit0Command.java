@@ -11,6 +11,6 @@ import turtle.Turtle;
 public class Digit0Command extends CompositeCommand {
     public Digit0Command(Turtle turtle) {
         // Draw rectangle for outer 0
-        addCommand(new RectangleCommand(turtle, 2, 5));
+        addCommand(new RectangleCommand(turtle, 2, 4));
     }
 }
