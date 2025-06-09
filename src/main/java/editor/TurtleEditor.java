@@ -65,6 +65,10 @@ public class TurtleEditor {
                         cmd = new SCommand(turtle);
                         cmd.execute();
                         continue;
+                    case "e":
+                        cmd = new ECommand(turtle);
+                        cmd.execute();
+                        continue;
                     case "trace":
                         cmd = new UndoableTraceCommand(turtle, Double.parseDouble(tokens[1]));
                         history.execute((UndoableCommand) cmd);

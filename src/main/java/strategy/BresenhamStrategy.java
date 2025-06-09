@@ -24,7 +24,7 @@ public class BresenhamStrategy implements DrawingStrategy {
         double y = y0;
 
         while ((int) x != (int) x1 || (int) y != (int) y1) {
-            m.setCell((int) x, (int) y, '#');
+            m.setCell((int)Math.round(x), (int)Math.round(y), '#');
             double e2 = 2 * error;
             if (e2 >= dy) {
                 if ((int) x == (int) x1) break;
