@@ -73,14 +73,29 @@ public class TurtleEditor {
                         cmd = new UndoableTurnCommand(turtle, Double.parseDouble(tokens[1]));
                         history.execute((UndoableCommand) cmd);
                         continue;
+                    case "penup":
+                        turtle.penUp();
+                        continue;
+                    case "pendown":
+                        turtle.penDown();
+                        continue;
                     case "3":
                         cmd = new ThreeCommand(turtle);
+                        cmd.execute();
+                        continue;
+                    case "e":
+                        cmd = new ECommand(turtle);
                         cmd.execute();
                         continue;
                     case "zero":
                         cmd = new Digit0Command(turtle);
                         cmd.execute();
                         continue;
+                    case "se350":
+                        cmd = new SE350Command(turtle);
+                        cmd.execute();
+                        continue;
+
                     default:
                         System.out.println("Unknown command.");
                         continue;
