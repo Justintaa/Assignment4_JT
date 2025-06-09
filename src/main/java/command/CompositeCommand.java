@@ -16,7 +16,7 @@ import java.util.List;
 public class CompositeCommand implements Command {
     protected final List<Command> commands = new ArrayList<>();
 
-    public void AddCommand(Command command) {
+    public void addCommand(Command command) {
         commands.add(command);
     }
 

@@ -53,6 +53,10 @@ public class TurtleEditor {
                     case "redo":
                         cmd = new RedoCommand(history);
                         break;
+                    case "rect":
+                        cmd = new RectangleCommand(turtle, 10, 5);
+                        cmd.execute(); 
+                        continue;
                     case "move":
                         cmd = new UndoableMoveCommand(turtle, Double.parseDouble(tokens[1]));
                         history.execute((UndoableCommand) cmd);
